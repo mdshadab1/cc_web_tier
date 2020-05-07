@@ -32,9 +32,9 @@ def icms():
             dictToJson["hour"] = int(formResult["hour"][:2])
             dictToJson["day"] = datetime.datetime.strptime(formResult["day"], "%Y-%m-%d").strftime('%a')
             # call to analytics url
-            res = requests.post('https://app-tier2-analytics.uc.r.appspot.com/analytics', json=dictToJson)
+            res = requests.post('https://app-tier2-analytics-collection.uc.r.appspot.com/analytics', json=dictToJson)
             if str(res) != '<Response [200]>':
-                res = requests.post('https://app-tier2-analytics.uc.r.appspot.com/analytics', json=dictToJson)
+                res = requests.post('https://app-tier2-analytics-collection.uc.r.appspot.com/analytics', json=dictToJson)
             print(res)
         response_data = res.json()
         # print(response_data)
