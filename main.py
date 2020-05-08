@@ -1,6 +1,6 @@
 import requests
 from flask import Flask, render_template, request
-from flask_googlemaps import GoogleMaps, get_coordinates
+from flask_googlemaps import GoogleMaps
 from forms import InfoForm
 from flask_googlemaps import Map
 from timezonefinder import TimezoneFinder
