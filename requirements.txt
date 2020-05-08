@@ -9,3 +9,5 @@ click
 Jinja2
 MarkupSafe
 flask-googlemaps
+pytz
+
