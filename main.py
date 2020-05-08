@@ -1,11 +1,11 @@
-import datetime
-import os
-
 import requests
 from flask import Flask, render_template, request
 from flask_googlemaps import GoogleMaps, get_coordinates
 from forms import InfoForm
 from flask_googlemaps import Map
+from timezonefinder import TimezoneFinder
+from datetime import datetime
+import pytz
 
 app = Flask(__name__)  # create an app instance
 app.config['SECRET_KEY'] = 'nopassword'
@@ -165,12 +165,10 @@ def responseParser(response_data, address, qtype, visitTime):
 
 
 def getCurrentTime(long, lat):
-    from timezonefinder import TimezoneFinder
-    from time import ctime, time
     tf = TimezoneFinder()
     time_zone = tf.timezone_at(lng=long, lat=lat)
-    os.environ['TZ'] = time_zone
-    dt = ctime(time())
+    tz = pytz.timezone(time_zone)
+    dt = datetime.now(tz).ctime()
     get_time = dt.split(" ")[4].split(":")
     hrs_stored = int(get_time[0])
     return hrs_stored
@@ -187,4 +185,4 @@ def get_coordinates(API_KEY, address_text):
 
 if __name__ == "__main__":  # on running python 
     # name="cloud"
-    app.run(debug=True)  # run the flask app
+    app.run()  # run the flask app
