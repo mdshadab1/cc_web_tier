@@ -30,7 +30,7 @@ def icms():
             print(res)
         else:
             dictToJson["hour"] = int(formResult["hour"][:2])
-            dictToJson["day"] = datetime.datetime.strptime(formResult["day"], "%Y-%m-%d").strftime('%a')
+            dictToJson["day"] = datetime.strptime(formResult["day"], "%Y-%m-%d").strftime('%a')
             # call to analytics url
             res = requests.post('https://app-tier2-analytics-collection.uc.r.appspot.com/analytics', json=dictToJson)
             if str(res) != '<Response [200]>':
