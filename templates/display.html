@@ -142,6 +142,13 @@
           });
         }
 
+        function validDate(){
+            var today = new Date().toISOString().split('T')[0];
+            var nextWeekDate = new Date(new Date().getTime() + 6 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+          document.getElementsByName("day")[0].setAttribute('min', today);
+          document.getElementsByName("day")[0].setAttribute('max', nextWeekDate)
+        }
+        validDate()
     </script>
 
 <!--    <p>-->
